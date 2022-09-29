@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #1a1a1a;
+      }
+    </style>
+  </defs>
+  <title>play</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_3" data-name="Layer 3">
+      <g>
+        <circle class="cls-1" cx="25" cy="25" r="25"/>
+        <polygon class="cls-2" points="15.69 13.15 15.69 36.85 36.56 25 15.69 13.15"/>
+      </g>
+    </g>
+  </g>
+</svg>
