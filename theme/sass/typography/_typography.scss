@@ -1,0 +1,19 @@
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+select,
+optgroup,
+textarea {
+	text-rendering: optimizeLegibility;
+}
+
+@import "headings";
+
+@import "copy";
+
+@include non-latin-fonts();

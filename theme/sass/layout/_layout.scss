@@ -1,0 +1,14 @@
+html,
+body {
+    background-color: $beReelDarkGrey;
+}
+
+.wrapper {
+    background-color: $beReelLightGrey;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.3);
+    margin: 0 auto 75px;
+    max-width: 951px;
+    overflow: hidden;
+    padding-bottom: 50px;
+    position: relative;
+}

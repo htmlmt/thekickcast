@@ -1,0 +1,59 @@
+// Brand Colors
+$beReelLightGrey: #eaeaea;
+$beReelGrey: #939393;
+$beReelDarkGrey: #4a4a4a;
+$beReelBlack: #1a1a1a;
+$beReelYellow: #f2f251;
+$beReelDarkBlue: #596c82;
+$beReelBlue: #72b2f2;
+$beReelLightBlue: #98b6e2;
+
+// Site Colors
+$siteBlue: #33CCC8;
+$siteGray: #E6E6E6;
+$siteBlack: #323232;
+$siteDarkBlue: #1AB3AF;
+$siteYellow: #F9DB2D;
+
+// Greys
+$black: #000;
+$darkerGrey: lighten($black, 10%);
+$darkGrey: lighten($black, 25%);    //#404040
+$midGrey: lighten($black, 50%);     //#808080
+$lightGrey: lighten($black, 75%);   //#bfbfbf
+$lighterGrey: lighten($black, 90%); //#e6e6e6
+$white: #fff;
+
+// Backgrounds
+$color__background-body: #fff;
+$color__background-input: #fff;
+$color__background-screen: #f1f1f1;
+$color__background-hr: #ccc;
+$color__background-button: #0073aa;
+$color__background-button-hover: #111;
+$color__background-pre: #eee;
+$color__background-ins: #fff9c0;
+$color__background_selection: mix( $color__background-body, $color__background-button, 75% ); // lighten( salmon, 22.5% ); // lighten( #0999d4, 48% );
+
+// Text
+$color__text-main: $beReelBlack;
+$color__text-light: #767676;
+$color__text-hover: lighten( #111, 22.5% );
+$color__text-screen: #21759b;
+$color__text-input: #666;
+$color__text-input-focus: #111;
+
+// Links
+$color__link: $beReelBlack;
+$color__link-visited: $beReelBlack;
+$color__link-hover: darken( $color__link, 10% );
+
+// Borders
+$color__border: #ccc;
+$color__border-link: #0073aa;
+$color__border-link-hover: darken( $color__link, 10% );
+$color__border-button: #ccc #ccc #bbb;
+$color__border-button-hover: #ccc #bbb #aaa;
+$color__border-button-focus: #aaa #bbb #bbb;
+$color__border-input: $color__border;
+$color__border-abbr: #666;
