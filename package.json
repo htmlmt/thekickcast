@@ -1,0 +1,38 @@
+{
+	"name": "bereelpodcast",
+	"version": "1.0.0",
+	"description": "Be Reel is a movie reviewing & reappraising podcast hosted by Chance Solem-Pfeifer and Noah Ballard.",
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/htmlmt/bereelpodcast.git"
+	},
+	"browserslist": "defaults, not ie <= 11",
+	"author": "Michael Todd",
+	"bugs": {
+		"url": "https://github.com/htmlmt/bereelpodcast/issues"
+	},
+	"homepage": "https://github.com/htmlmt/bereelpodcast#readme",
+	"dependencies": {
+		"@tailwindcss/typography": "^0.5.7",
+		"autoprefixer": "^10.4.12",
+		"clsx": "^1.2.1",
+		"focus-visible": "^5.2.0",
+		"next": "^12.3.1",
+		"postcss-focus-visible": "^7.1.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"tailwindcss": "^3.1.8"
+	},
+	"devDependencies": {
+		"eslint": "^8.24.0",
+		"eslint-config-next": "^12.3.1",
+		"prettier": "^2.7.1",
+		"prettier-plugin-tailwindcss": "^0.1.13"
+	}
+}
