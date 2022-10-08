@@ -1,4 +1,4 @@
-export default function SearchForm() {
+export function SearchForm() {
 	return (
 		<form className="flex grow items-stretch">
 			<fieldset className="relative grow flex items-stretch overflow-visible c-fieldset v-fieldset-search">
