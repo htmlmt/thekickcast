@@ -1,7 +1,15 @@
 import clsx from 'clsx';
 
-export function HeadingText({ as: Component = 'h2', className, ...props }) {
+export function HeadingText({
+	as: Component = 'h2',
+	className,
+	sizeClass = 'text-3xl',
+	...props
+}) {
 	return (
-		<Component className={clsx(className, 'text-xl font-display')} {...props} />
+		<Component
+			className={clsx(className, `${sizeClass} font-display`)}
+			{...props}
+		/>
 	);
 }
