@@ -11,7 +11,7 @@ export function SiteHeader() {
 	return (
 		<header className="bg-white bg-header-pattern bg-24 py-6">
 			<PageWrapper>
-				<SpacingWrapper className="flex flex-wrap gap-x-8 justify-center md:justify-between items-end gap-y-6">
+				<SpacingWrapper className="flex flex-wrap items-end justify-center gap-x-8 gap-y-6 md:justify-between">
 					<Link className="-rotate-1" href="/">
 						<LogoImage />
 					</Link>
@@ -20,5 +20,5 @@ export function SiteHeader() {
 				</SpacingWrapper>
 			</PageWrapper>
 		</header>
-	)
+	);
 }

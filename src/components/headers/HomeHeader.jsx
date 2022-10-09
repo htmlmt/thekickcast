@@ -9,7 +9,7 @@ import { SpacingWrapper } from '@/components/wrappers/SpacingWrapper';
 
 export function HomeHeader({ heroPost }) {
 	return (
-		<header className="pt-12 relative">
+		<header className="relative pt-12">
 			<PageWrapper>
 				<SpacingWrapper className="c-hero grid grid-cols-1 md:grid-cols-2">
 					<ContentCard
@@ -31,7 +31,7 @@ export function HomeHeader({ heroPost }) {
 				</SpacingWrapper>
 			</PageWrapper>
 
-			<PlayButton className="rotate-1 z-30" />
+			<PlayButton className="z-30 rotate-1" />
 		</header>
-	)
+	);
 }
