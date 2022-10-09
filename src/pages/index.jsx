@@ -1,14 +1,24 @@
 import Head from 'next/head';
 
-import { getAllPostsForHome } from '../lib/api';
+import { getEpisodes } from '@/lib/api';
+import { getMovies } from '@/lib/api';
+import { getPageById } from '@/lib/api';
 
-import { BadgeText } from '@/components/text/BadgeText';
-import { EyebrowText } from '@/components/text/EyebrowText';
-import { HeadingText } from '@/components/text/HeadingText';
-import { TimeText } from '@/components/text/TimeText';
+import { ContentCard } from '@/components/cards/ContentCard';
 
-export default function Home({ allPosts: { edges } }) {
-	const heroPost = edges[0]?.node;
+import { EpisodesCollection } from '@/components/collections/EpisodesCollection';
+import { MoviesCollection } from '@/components/collections/MoviesCollection';
+
+import { HomeHeader } from '@/components/headers/HomeHeader';
+
+import { PageWrapper } from '@/components/wrappers/PageWrapper';
+
+export default function Home({ aboutPage, episodes, movies }) {
+	episodes = episodes.edges.map(({ node }) => node);
+	movies = movies.edges.map(({ node }) => node);
+
+	const heroPost = episodes[0];
+	episodes = episodes.slice(1);
 
 	return (
 		<>
@@ -18,42 +28,42 @@ export default function Home({ allPosts: { edges } }) {
 				<meta name="description" content="" />
 			</Head>
 
-			<div className="grid gap-8 p-10">
-				<div className="flex gap-2">
-					<BadgeText>Must See</BadgeText>
+			{heroPost && (
+				<HomeHeader heroPost={heroPost} />
+			)}
 
-					<BadgeText variant="goodBad">Brainy But Boring</BadgeText>
+			{episodes.length > 0 && (
+				<EpisodesCollection episodes={episodes} />
+			)}
 
-					<BadgeText variant="badGood">Fun But Silly</BadgeText>
+			{movies.length > 0 && (
+				<MoviesCollection movies={movies} />
+			)}
 
-					<BadgeText variant="mixed">Mixed Reviews</BadgeText>
-
-					<BadgeText variant="badBad">Stay Away</BadgeText>
-
-					<BadgeText href="/">The Edge</BadgeText>
-				</div>
-
-				<div>
-					<EyebrowText>All Episodes</EyebrowText>
-				</div>
-
-				<div>
-					<HeadingText>{heroPost.title}</HeadingText>
-				</div>
-
-				<div className="flex justify-between gap-x-4 bg-gray-900 px-4 py-2">
-					<TimeText className="text-yellow-400">00:00:00</TimeText>
-					<TimeText className="text-gray-400">00:00:00</TimeText>
-				</div>
-			</div>
+			{aboutPage && (
+				<PageWrapper>
+					<ContentCard
+						content={aboutPage.content}
+						eyebrowText={aboutPage.tagline.tagline}
+						headingText={aboutPage.title}
+						polygon="reversed"
+					/>
+				</PageWrapper>
+			)}
 		</>
 	);
 }
 
 export async function getStaticProps() {
-	const allPosts = await getAllPostsForHome();
+	const aboutPage = await getPageById(4062);
+	let episodes = await getEpisodes();
+	let movies = await getMovies();
 
 	return {
-		props: { allPosts },
+		props: {
+			aboutPage,
+			episodes,
+			movies,
+		},
 	};
 }
