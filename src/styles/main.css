@@ -1,0 +1,69 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+	#__next {
+		@apply flex h-full flex-col;
+	}
+
+	.c-rich-text a {
+		text-decoration: underline;
+	}
+
+	.c-hero a::after,
+	.c-episode a::after {
+		content: '';
+		left: 0;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 20;
+	}
+
+	.c-content {
+		@apply flex flex-col gap-y-8;
+	}
+
+	.c-content figure {
+		@apply flex flex-col gap-y-4;
+	}
+
+	.c-content img,
+	.c-content figure {
+		width: 100% !important;
+	}
+}
+
+::-webkit-scrollbar {
+	width: 1rem;
+}
+
+::selection {
+	@apply bg-gray-900 fill-yellow-400 text-yellow-400;
+}
+
+.c-episodes-collection::-webkit-scrollbar {
+	height: 1rem;
+}
+
+::-webkit-scrollbar-track {
+	@apply bg-gray-50;
+}
+
+::-webkit-scrollbar-thumb {
+	@apply bg-blue-700;
+}
+
+.v-label-search {
+	transition-duration: 250ms;
+	transition-property: all;
+}
+
+.v-fieldset-search:focus-within .v-label-search {
+	@apply bg-gray-900 text-white px-4 py-1;
+	left: 0;
+	top: 0;
+	transform: translate(0, -100%);
+}
