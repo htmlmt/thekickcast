@@ -104,7 +104,7 @@ export async function getMovies() {
 export async function getEpisodes(after, before, first, last) {
 	const data = await fetchAPI(
 		`
-			query Episodes($after: String = null, $before: String = null, $first: Int = 11, $last: Int = null) {
+			query Episodes($after: String = null, $before: String = null, $first: Int = 6, $last: Int = null) {
 				posts(after: $after, before: $before, first: $first, last: $last, where: {orderby: {field: DATE, order: DESC}}) {
 					edges {
 						node {
@@ -199,7 +199,7 @@ export async function getAllPostsWithSlug() {
 	const data = await fetchAPI(
 		`
 			{
-				posts(first: 11) {
+				posts(first: 6) {
 					edges {
 						node {
 							slug
