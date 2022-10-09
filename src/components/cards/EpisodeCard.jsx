@@ -15,7 +15,7 @@ export function EpisodeCard({
 		<div className="overflow-visible flex flex-col w-64 grow shrink-0 relative c-episode">
 			<div className="h-2 w-full bg-yellow-400 absolute top-0 -translate-y-1/2 z-10" />
 
-			<div class="h-48 relative w-full bg-gray-900">
+			<div className="h-48 relative w-full bg-gray-900">
 				<Image
 					layout="fill"
 					objectFit="cover"
@@ -35,7 +35,7 @@ export function EpisodeCard({
 			</SpacingWrapper>
 
 			<SpacingWrapper className="bg-white py-2">
-				<p class="underline" id={`episode-${episodeNumber}-number`}>episode {episodeNumber}</p>
+				<p className="underline" id={`episode-${episodeNumber}-number`}>episode {episodeNumber}</p>
 			</SpacingWrapper>
 		</div>
 	);

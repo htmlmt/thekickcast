@@ -61,7 +61,7 @@ export function ContentCard({
 
 				{link && (
 					<SpacingWrapper>
-						<p class="underline">read more</p>
+						<p className="underline">read more</p>
 					</SpacingWrapper>
 				)}
 			</div>
