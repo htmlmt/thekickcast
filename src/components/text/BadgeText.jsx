@@ -9,9 +9,14 @@ const variantStyles = {
 	mixed: 'bg-gray-50',
 };
 
-export function BadgeText({ variant = 'good_good', className, href, ...props }) {
+export function BadgeText({
+	variant = 'good_good',
+	className,
+	href,
+	...props
+}) {
 	className = clsx(
-		'inline-block p-2 text-base font-semibold tracking-wider whitespace-nowrap',
+		'inline-block p-2 text-base font-semibold tracking-wider whitespace-nowrap text-ellipsis overflow-hidden',
 		variantStyles[variant],
 		className
 	);
