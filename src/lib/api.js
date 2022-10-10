@@ -1,7 +1,12 @@
+import { readFileSync, existsSync } from 'fs';
+
 const API_URL = process.env.WORDPRESS_API_URL;
 
 async function fetchAPI(query = '', { variables } = {}) {
-	const headers = { 'Content-Type': 'application/json' };
+	const headers = {
+		'Content-Type': 'application/json',
+		'Cache-Control': 'maxage=120',
+	};
 
 	const res = await fetch(API_URL, {
 		headers,
@@ -20,66 +25,11 @@ async function fetchAPI(query = '', { variables } = {}) {
 	return json.data;
 }
 
-export async function getHeroPost() {
-	const data = await fetchAPI(
-		`
-			query HeroPost {
-				posts(first: 1, where: {orderby: {field: DATE, order: DESC}}) {
-					edges {
-						node {
-							title
-							excerpt
-							slug
-							date
-							featuredImage {
-								node {
-									srcSet
-									sourceUrl(size: MEDIUM_LARGE)
-								}
-							}
-							episodeTeaser {
-								teaser
-							}
-							episodeNumber {
-								episodeNumber
-							}
-							reviews {
-								movies {
-									chanceReview
-									movieTitle
-									noahReview
-								}
-							}
-							audio {
-								audioLink
-							}
-							featuredGuests {
-								guests {
-									name
-								}
-							}
-						}
-						cursor
-					}
-					pageInfo {
-						startCursor
-						hasPreviousPage
-						hasNextPage
-						endCursor
-					}
-				}
-			}
-		`
-	);
-
-	return data?.posts.edges[0]?.node;
-}
-
 export async function getMovies() {
 	const data = await fetchAPI(
 		`
 			query Movies {
-				movies(first: 1000, where: {orderby: {field: TITLE, order: ASC}}) {
+				movies(first: 10000, where: {orderby: {field: TITLE, order: ASC}}) {
 					edges {
 						node {
 							title
@@ -104,11 +54,12 @@ export async function getMovies() {
 export async function getEpisodes(after, before, first, last) {
 	const data = await fetchAPI(
 		`
-			query Episodes($after: String = null, $before: String = null, $first: Int = 6, $last: Int = null) {
+			query Episodes($after: String = null, $before: String = null, $first: Int = 11, $last: Int = null) {
 				posts(after: $after, before: $before, first: $first, last: $last, where: {orderby: {field: DATE, order: DESC}}) {
 					edges {
 						node {
 							title
+							content
 							slug
 							featuredImage {
 								node {
@@ -168,8 +119,15 @@ export async function getPageById(id, idType = 'DATABASE_ID') {
 }
 
 export async function getPostBySlug(slug) {
-	const data = await fetchAPI(
-		`
+	if (existsSync('src/data/episodes.json')) {
+		const episodesFile = readFileSync('src/data/episodes.json');
+		const episodesData = JSON.parse(episodesFile);
+		const data = episodesData.find((episode) => episode.slug === slug);
+
+		return data;
+	} else {
+		const data = await fetchAPI(
+			`
 			query PostBySlug($id: ID!, $idType: PostIdType!) {
 				post(id: $id, idType: $idType) {
         			content
@@ -187,19 +145,20 @@ export async function getPostBySlug(slug) {
 				}
 			}
 		`,
-		{
-			variables: { id: slug, idType: 'SLUG' },
-		}
-	);
+			{
+				variables: { id: slug, idType: 'SLUG' },
+			}
+		);
 
-	return data;
+		return data.post;
+	}
 }
 
 export async function getAllPostsWithSlug() {
 	const data = await fetchAPI(
 		`
 			{
-				posts(first: 6) {
+				posts(first: 10000) {
 					edges {
 						node {
 							slug

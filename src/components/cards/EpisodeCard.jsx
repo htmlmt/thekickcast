@@ -5,26 +5,16 @@ import { HeadingText } from '@/components/text/HeadingText';
 
 import { SpacingWrapper } from '@/components/wrappers/SpacingWrapper';
 
-export function EpisodeCard({
-	episodeNumber,
-	headingText,
-	imageUrl,
-	link,
-}) {
+export function EpisodeCard({ episodeNumber, headingText, imageUrl, link }) {
 	return (
-		<div className="overflow-visible flex flex-col w-64 grow shrink-0 relative c-episode">
-			<div className="h-2 w-full bg-yellow-400 absolute top-0 -translate-y-1/2 z-10" />
+		<div className="c-episode relative flex w-full max-w-episode shrink-0 grow flex-col overflow-visible">
+			<div className="absolute top-0 z-10 h-2 w-full -translate-y-1/2 bg-yellow-400" />
 
-			<div className="h-48 relative w-full bg-gray-900">
-				<Image
-					layout="fill"
-					objectFit="cover"
-					quality={100}
-					src={imageUrl}
-				/>
+			<div className="relative h-48 w-full bg-gray-900">
+				<Image layout="fill" objectFit="cover" quality={100} src={imageUrl} />
 			</div>
 
-			<SpacingWrapper className="bg-blue-800 py-12 grow z-0">
+			<SpacingWrapper className="z-0 grow bg-blue-800 py-12">
 				<Link
 					aria-describedby={`episode-${episodeNumber}-number`}
 					className="inline-block"
@@ -35,7 +25,9 @@ export function EpisodeCard({
 			</SpacingWrapper>
 
 			<SpacingWrapper className="bg-white py-2">
-				<p className="underline" id={`episode-${episodeNumber}-number`}>episode {episodeNumber}</p>
+				<p className="underline" id={`episode-${episodeNumber}-number`}>
+					episode {episodeNumber}
+				</p>
 			</SpacingWrapper>
 		</div>
 	);

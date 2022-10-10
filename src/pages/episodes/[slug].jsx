@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
-import { getPostBySlug } from '@/lib/api';
-import { getAllPostsWithSlug } from '@/lib/api';
+import { getPostBySlug } from '@/lib/api.js';
+import { getAllPostsWithSlug } from '@/lib/api.js';
 
 import { PostHeader } from '@/components/headers/PostHeader';
 
@@ -12,7 +12,7 @@ export default function Post({ post }) {
 	return (
 		<>
 			<Head>
-				<title>{post.title}</title>
+				<title>{post?.title}</title>
 			</Head>
 
 			<PostHeader post={post} />
@@ -22,7 +22,7 @@ export default function Post({ post }) {
 					<div
 						className="c-content c-rich-text"
 						dangerouslySetInnerHTML={{
-							__html: post.content,
+							__html: post?.content,
 						}}
 					/>
 				</SpacingWrapper>
@@ -32,11 +32,11 @@ export default function Post({ post }) {
 }
 
 export async function getStaticProps({ params }) {
-	const data = await getPostBySlug(params?.slug);
+	let data = await getPostBySlug(params?.slug);
 
 	return {
 		props: {
-			post: data?.post,
+			post: data,
 		},
 	};
 }
