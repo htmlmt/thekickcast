@@ -1,3 +1,4 @@
+import mkdirp from 'mkdirp';
 import { writeFileSync } from 'fs';
 
 let episodes = [];
@@ -65,6 +66,7 @@ async function buildCacheFiles(after, before, first, last) {
 	if (json.data.posts.pageInfo.hasNextPage) {
 		buildCacheFiles(json.data.posts.pageInfo.endCursor);
 	} else {
+		await mkdirp('src/data');
 		writeFileSync('src/data/episodes.json', JSON.stringify(episodes));
 	}
 }
