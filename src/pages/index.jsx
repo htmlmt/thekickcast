@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
-import { getEpisodes } from '@/lib/api';
-import { getMovies } from '@/lib/api';
-import { getPageById } from '@/lib/api';
+import { getEpisodes } from '@/lib/api.js';
+import { getMovies } from '@/lib/api.js';
+import { getPageById } from '@/lib/api.js';
 
 import { ContentCard } from '@/components/cards/ContentCard';
 
@@ -28,17 +28,11 @@ export default function Home({ aboutPage, episodes, movies }) {
 				<meta name="description" content="" />
 			</Head>
 
-			{heroPost && (
-				<HomeHeader heroPost={heroPost} />
-			)}
+			{heroPost && <HomeHeader heroPost={heroPost} />}
 
-			{episodes.length > 0 && (
-				<EpisodesCollection episodes={episodes} />
-			)}
+			{episodes.length > 0 && <EpisodesCollection episodes={episodes} />}
 
-			{movies.length > 0 && (
-				<MoviesCollection movies={movies} />
-			)}
+			{movies.length > 0 && <MoviesCollection movies={movies} />}
 
 			{aboutPage && (
 				<PageWrapper>

@@ -32,12 +32,13 @@ module.exports = {
 				24: '24px',
 			},
 			maxWidth: {
+				episode: '300px',
 				page: '768px',
 				site: '960px',
 			},
 			rotate: {
 				'-1': '-1deg',
-				'1': '1deg',
+				1: '1deg',
 			},
 			width: {
 				30: '7.5rem',
@@ -50,8 +51,8 @@ module.exports = {
 			mono: ['Roboto Mono', 'sans-serif'],
 		},
 		screens: {
-			'md': '820px',
-			'lg': '1024px',
-		}
+			md: '820px',
+			lg: '1024px',
+		},
 	},
 };
