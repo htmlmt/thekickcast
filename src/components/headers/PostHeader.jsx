@@ -17,7 +17,7 @@ export function PostHeader({ post }) {
 					</EyebrowText>
 				</PageWrapper>
 
-				<div className="absolute bottom-0 left-0 z-0 h-1/2 w-full bg-gray-50" />
+				<div className="absolute bottom-0 left-0 z-0 h-1/2 w-full bg-white" />
 			</div>
 		</header>
 	);

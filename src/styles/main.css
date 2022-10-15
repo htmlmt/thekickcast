@@ -44,6 +44,21 @@
 	@apply bg-gray-900 fill-yellow-400 text-yellow-400;
 }
 
+.c-episodes-collection {
+	overscroll-behavior-inline: contain;
+	scroll-snap-type: inline proximity;
+}
+
+.c-episode {
+	scroll-snap-align: start;
+}
+
+iframe {
+	aspect-ratio: 16 / 9;
+	height: 100%;
+	width: 100%;
+}
+
 .c-episodes-collection::-webkit-scrollbar {
 	height: 1rem;
 }
@@ -56,13 +71,19 @@
 	@apply bg-blue-700;
 }
 
+input[type='search'] {
+	appearance: none;
+	background: white;
+	border-radius: 0;
+}
+
 .v-label-search {
 	transition-duration: 250ms;
 	transition-property: all;
 }
 
 .v-fieldset-search:focus-within .v-label-search {
-	@apply bg-gray-900 text-white px-4 py-1;
+	@apply bg-gray-900 px-4 py-1 text-white;
 	left: 0;
 	top: 0;
 	transform: translate(0, -100%);

@@ -7,16 +7,16 @@ import { ContentCard } from '@/components/cards/ContentCard';
 import { PageWrapper } from '@/components/wrappers/PageWrapper';
 import { SpacingWrapper } from '@/components/wrappers/SpacingWrapper';
 
-export function HomeHeader({ heroPost }) {
+export function HomeHeader({ heroPost, player }) {
 	return (
-		<header className="relative pt-12">
+		<header className="relative bg-gray-50 pt-12">
 			<PageWrapper>
 				<SpacingWrapper className="c-hero grid grid-cols-1 md:grid-cols-2">
 					<ContentCard
-						content={heroPost.episodeTeaser.teaser}
-						eyebrowText={`Episode ${heroPost.episodeNumber.episodeNumber}`}
-						headingText={heroPost.title}
-						link={`/episodes/${heroPost.slug}`}
+						content={heroPost?.episodeTeaser.teaser}
+						eyebrowText={`Episode ${heroPost?.episodeNumber.episodeNumber}`}
+						headingText={heroPost?.title}
+						link={`/episodes/${heroPost?.slug}`}
 					/>
 
 					<div className="relative">
@@ -31,7 +31,7 @@ export function HomeHeader({ heroPost }) {
 				</SpacingWrapper>
 			</PageWrapper>
 
-			<PlayButton className="z-30 rotate-1" />
+			<PlayButton className="z-30 rotate-1" player={player} />
 		</header>
 	);
 }

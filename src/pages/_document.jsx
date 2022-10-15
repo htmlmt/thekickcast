@@ -5,7 +5,7 @@ export default function Document() {
 		<Html className="h-full antialiased" lang="en">
 			<Head>
 				<link
-					href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@400;700&family=Saira:wght@400;600&family=Roboto+Mono&family=Playfair+Display:ital,wght@1,700&display=optional"
+					href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@400;700&family=Saira:wght@400;600&family=Roboto+Mono&family=Playfair+Display:ital,wght@1,700&display=swap"
 					rel="stylesheet"
 				/>
 			</Head>
