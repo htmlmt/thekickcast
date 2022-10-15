@@ -8,13 +8,13 @@ export function LogoImage() {
 			<title>Be Reel Podcast logo</title>
 			<rect
 				className="fill-blue-800"
+				height="82.54"
+				width="317.93"
 				x="10.07"
 				y="10.46"
-				width="317.93"
-				height="82.54"
 			/>
-			<g className="spring">
-				<rect className="fill-blue-700" width="317.93" height="82.54" />
+			<g id="logo-foreground">
+				<rect className="fill-blue-700" height="82.54" width="317.93" />
 				<g>
 					<path
 						className="fill-gray-900"
