@@ -18,6 +18,14 @@ async function buildCacheFiles(after, before, first, last) {
 						title
 						content
 						slug
+						featuredImage {
+							node {
+								sourceUrl(size: MEDIUM_LARGE)
+							}
+						}
+						episodeTeaser {
+							teaser
+						}
 						episodeNumber {
 							episodeNumber
 						}
@@ -27,6 +35,19 @@ async function buildCacheFiles(after, before, first, last) {
 						featuredGuests {
 							guests {
 								name
+							}
+						}
+						reviews {
+							movies {
+								movie {
+									... on Movie {
+										id
+										movies {
+											review
+										}
+										title
+									}
+								}
 							}
 						}
 					}
