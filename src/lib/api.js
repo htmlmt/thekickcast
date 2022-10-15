@@ -52,49 +52,56 @@ export async function getMovies() {
 }
 
 export async function getEpisodes(after, before, first, last) {
-	const data = await fetchAPI(
-		`
-			query Episodes($after: String = null, $before: String = null, $first: Int = 11, $last: Int = null) {
-				posts(after: $after, before: $before, first: $first, last: $last, where: {orderby: {field: DATE, order: DESC}}) {
-					edges {
-						node {
-							title
-							content
-							slug
-							featuredImage {
-								node {
-									sourceUrl(size: MEDIUM_LARGE)
+	if (existsSync('src/data/episodes.json')) {
+		const episodesFile = readFileSync('src/data/episodes.json');
+		const episodesData = JSON.parse(episodesFile);
+
+		return episodesData;
+	} else {
+		const data = await fetchAPI(
+			`
+				query Episodes($after: String = null, $before: String = null, $first: Int = 11, $last: Int = null) {
+					posts(after: $after, before: $before, first: $first, last: $last, where: {orderby: {field: DATE, order: DESC}}) {
+						edges {
+							node {
+								title
+								content
+								slug
+								featuredImage {
+									node {
+										sourceUrl(size: MEDIUM_LARGE)
+									}
+								}
+								episodeTeaser {
+									teaser
+								}
+								episodeNumber {
+									episodeNumber
+								}
+								audio {
+									audioLink
+								}
+								featuredGuests {
+									guests {
+										name
+									}
 								}
 							}
-							episodeTeaser {
-								teaser
-							}
-							episodeNumber {
-								episodeNumber
-							}
-							audio {
-								audioLink
-							}
-							featuredGuests {
-								guests {
-									name
-								}
-							}
+							cursor
 						}
-						cursor
-					}
-					pageInfo {
-						startCursor
-						hasPreviousPage
-						hasNextPage
-						endCursor
+						pageInfo {
+							startCursor
+							hasPreviousPage
+							hasNextPage
+							endCursor
+						}
 					}
 				}
-			}
-		`
-	);
+			`
+		);
 
-	return data?.posts;
+		return data?.posts.edges.map((edge) => edge.node);
+	}
 }
 
 export async function getPageById(id, idType = 'DATABASE_ID') {
