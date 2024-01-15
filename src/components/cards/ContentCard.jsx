@@ -21,36 +21,38 @@ export function ContentCard({
 	const points = polygons[polygon];
 
 	return (
-		<ContentWrapper className="relative flex flex-col">
+		<div>
 			<div>
-				<svg className="fill-yellow-400" viewBox="0 0 100 5">
+				<svg className="-mb-px fill-gray-700" viewBox="0 0 100 5">
 					<polygon points={points} />
 				</svg>
 
-				<SpacingWrapper className="bg-yellow-400 py-2">
+				<SpacingWrapper className="bg-gray-700 py-2">
 					{link && (
 						<Link
 							aria-describedby="hero-teaser hero-episode-number"
-							className="inline-block"
+							className="inline-block text-secondary-400"
 							href={link}
 						>
 							<HeadingText>{headingText}</HeadingText>
 						</Link>
 					)}
 
-					{!link && <HeadingText>{headingText}</HeadingText>}
+					{!link && (
+						<HeadingText className="text-white">{headingText}</HeadingText>
+					)}
 				</SpacingWrapper>
 
-				<SpacingWrapper className="relative bg-yellow-400">
-					<EyebrowText id="hero-episode-number">
-						{eyebrowText}
-					</EyebrowText>
+				{eyebrowText && (
+					<SpacingWrapper className="relative bg-gray-700">
+						<EyebrowText id="hero-episode-number">{eyebrowText}</EyebrowText>
 
-					<div className="absolute bottom-0 left-0 z-0 h-1/2 w-full bg-white" />
-				</SpacingWrapper>
+						<div className="absolute bottom-0 left-0 z-0 h-1/2 w-full bg-white" />
+					</SpacingWrapper>
+				)}
 			</div>
 
-			<div className="flex grow flex-col gap-y-4 bg-white py-8 c-rich-text">
+			<div className="c-rich-text flex grow flex-col gap-y-4 bg-white py-8">
 				<SpacingWrapper
 					className="flex flex-col gap-y-4"
 					dangerouslySetInnerHTML={{
@@ -65,6 +67,6 @@ export function ContentCard({
 					</SpacingWrapper>
 				)}
 			</div>
-		</ContentWrapper>
+		</div>
 	);
 }

@@ -22,7 +22,7 @@ function playButtons(className, player, size) {
 			return (
 				<button
 					aria-label={player.playing ? 'Pause' : 'Play'}
-					className={clsx(className, 'rounded-full bg-blue-700')}
+					className={clsx(className, 'rounded-full bg-secondary-400')}
 					onClick={player.toggle}
 				>
 					<IconImage icon={player.playing ? 'pause' : 'play'} />
@@ -43,22 +43,22 @@ function playButtons(className, player, size) {
 					<svg
 						title="play"
 						xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 185 60"
+						viewBox="0 0 180 70"
 					>
 						<g>
 							<rect
-								className="fill-blue-800"
+								className="fill-gray-700"
 								x="10"
 								y="10"
-								width="175"
-								height="50"
+								width="170"
+								height="60"
 							/>
 							<g id="play-foreground">
-								<rect className="fill-blue-700" width="175" height="50" />
+								<rect className="fill-primary-400" width="170" height="60" />
 								<text
-									className="isolate fill-gray-900 font-serif text-4xl uppercase italic"
+									className="isolate fill-white font-display text-5xl uppercase tracking-wider"
 									textAnchor="middle"
-									transform="translate(87.5 35.75)"
+									transform="translate(85 47.5)"
 								>
 									{player.playing ? 'Pause' : 'Play'}
 								</text>

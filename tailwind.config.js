@@ -8,6 +8,16 @@ module.exports = {
 			current: 'currentColor',
 			white: '#ffffff',
 			black: '#000000',
+			primary: {
+				300: '#f990e8',
+				400: '#ef3270',
+			},
+			secondary: {
+				400: '#0cd2d3',
+			},
+			accent: {
+				400: '#f2f252',
+			},
 			yellow: {
 				400: '#f2f251',
 			},
@@ -20,34 +30,25 @@ module.exports = {
 			gray: {
 				50: '#eaeaea',
 				400: '#939393',
-				700: '#4a4a4a',
+				700: '#212121',
 				900: '#1a1a1a',
 			},
 		},
 		extend: {
 			backgroundImage: {
-				'header-pattern': "url('/graph-paper.svg')",
-			},
-			backgroundSize: {
-				24: '24px',
+				'header-pattern': "url('/background-sprinkles.svg')",
 			},
 			maxWidth: {
 				episode: '300px',
-				page: '768px',
-				site: '960px',
-			},
-			rotate: {
-				'-1': '-1deg',
-				1: '1deg',
+				page: '960px',
 			},
 			width: {
 				30: '7.5rem',
 			},
 		},
 		fontFamily: {
-			display: ['Saira Extra Condensed', 'sans-serif'],
-			sans: ['Saira', 'sans-serif'],
-			serif: ['Playfair Display', 'serif'],
+			display: ['Impact', 'sans-serif'],
+			sans: ['Roboto', 'sans-serif'],
 			mono: ['Roboto Mono', 'sans-serif'],
 		},
 		screens: {

@@ -2,28 +2,21 @@ import { useMemo } from 'react';
 
 import Head from 'next/head';
 
-import { getEpisodes, getMovies, getPageById } from '@/lib/api.js';
+import { getAboutPage, getEpisodes } from '@/lib/api.js';
 
 import { ContentCard } from '@/components/cards/ContentCard';
 
 import { EpisodesCollection } from '@/components/collections/EpisodesCollection';
-import { MoviesCollection } from '@/components/collections/MoviesCollection';
 
 import { HomeHeader } from '@/components/headers/HomeHeader';
 
 import { useAudioPlayer } from '@/components/providers/AudioProvider';
 
-import { BadgeText } from '@/components/text/BadgeText';
-import { HeadingText } from '@/components/text/HeadingText';
+import { ContentWrapper } from '@/components/wrappers/ContentWrapper';
 
-import { PageWrapper } from '@/components/wrappers/PageWrapper';
-import { SpacingWrapper } from '@/components/wrappers/SpacingWrapper';
-
-export default function Home({ aboutPage, episodes, movies }) {
-	movies = movies.edges.map(({ node }) => node);
-
-	const heroPost = episodes[0];
-	episodes = episodes.slice(1, 11);
+export default function Home({ aboutPage, episodes = [] }) {
+	episodes = episodes.edges?.map((edge) => edge.node) || [];
+	const heroPost = episodes[0] || null;
 
 	let audioPlayerData = useMemo(
 		() => ({
@@ -39,50 +32,25 @@ export default function Home({ aboutPage, episodes, movies }) {
 	return (
 		<>
 			<Head>
-				<title>Be Reel Podcast - Movie Reviews and Reappraisals</title>
+				<title>The Kick Podcast</title>
 
-				<meta
-					name="description"
-					content="Chance Solem-Pfeifer and Noah Ballard hop from genre to genre squabbling or bonding over what movies are high quality, highly watchable, both or neither."
-				/>
+				<meta name="description" content="" />
 			</Head>
 
 			{heroPost && <HomeHeader heroPost={heroPost} player={player} />}
 
-			<div className="flex flex-col gap-y-16 bg-gray-50">
+			<div className="flex flex-col gap-y-16 bg-header-pattern">
 				{episodes.length > 0 && <EpisodesCollection episodes={episodes} />}
 
-				{movies.length > 0 && (
-					<PageWrapper className="bg-white py-8">
-						<SpacingWrapper className="flex flex-col gap-y-8">
-							<HeadingText>We've Reviewed {movies.length} Movies</HeadingText>
-
-							<div className="flex flex-wrap gap-2">
-								<BadgeText variant="good_good">Must See</BadgeText>
-
-								<BadgeText variant="good_bad">Brainy But Boring</BadgeText>
-
-								<BadgeText variant="bad_good">Fun But Silly</BadgeText>
-
-								<BadgeText variant="mixed">Mixed Reviews</BadgeText>
-
-								<BadgeText variant="bad_bad">Stay Away</BadgeText>
-							</div>
-
-							<MoviesCollection movies={movies} />
-						</SpacingWrapper>
-					</PageWrapper>
-				)}
-
 				{aboutPage && (
-					<PageWrapper>
+					<ContentWrapper>
 						<ContentCard
 							content={aboutPage.content}
 							eyebrowText={aboutPage.tagline.tagline}
 							headingText={aboutPage.title}
 							polygon="reversed"
 						/>
-					</PageWrapper>
+					</ContentWrapper>
 				)}
 			</div>
 		</>
@@ -90,15 +58,13 @@ export default function Home({ aboutPage, episodes, movies }) {
 }
 
 export async function getStaticProps() {
-	const aboutPage = await getPageById(4062);
+	const aboutPage = await getAboutPage();
 	let episodes = await getEpisodes();
-	let movies = await getMovies();
 
 	return {
 		props: {
 			aboutPage,
 			episodes,
-			movies,
 		},
 	};
 }

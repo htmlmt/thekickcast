@@ -1,7 +1,7 @@
 {
-	"name": "bereelpodcast",
+	"name": "thekickpodcast",
 	"version": "1.0.0",
-	"description": "Be Reel is a movie reviewing & reappraising podcast hosted by Chance Solem-Pfeifer and Noah Ballard.",
+	"description": "The Kick is a movie reviewing podcast hosted by Chance Solem-Pfeifer.",
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
@@ -27,7 +27,7 @@
 		"focus-visible": "^5.2.0",
 		"fs": "^0.0.1-security",
 		"mkdirp": "^1.0.4",
-		"next": "^12.3.1",
+		"next": "^14.0.4",
 		"postcss-focus-visible": "^7.1.0",
 		"react": "^18.2.0",
 		"react-aria": "^3.20.0",

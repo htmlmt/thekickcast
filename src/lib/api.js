@@ -1,6 +1,5 @@
-import { readFileSync, existsSync } from 'fs';
-
 const API_URL = process.env.WORDPRESS_API_URL;
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
 async function fetchAPI(query = '', { variables } = {}) {
 	const headers = {
@@ -25,90 +24,62 @@ async function fetchAPI(query = '', { variables } = {}) {
 	return json.data;
 }
 
-export async function getMovies() {
-	const data = await fetchAPI(
-		`
-			query Movies {
-				movies(first: 10000, where: {orderby: {field: TITLE, order: ASC}}) {
+export async function getEpisodes() {
+	let data;
+
+	try {
+		const response = await fetch('/data/episodes.json');
+		if (!response.ok) {
+			// if HTTP-status is 404, 500 or such
+			throw new Error("Can't fetch the local file");
+		}
+		data = await response.json();
+	} catch (error) {
+		data = await fetchAPI(
+			`
+			query Episodes {
+				posts(first: 50, where: {orderby: {field: DATE, order: DESC}}) {
 					edges {
 						node {
 							title
-							movies {
-								post {
-									... on Post {
-										slug
-									}
+							content
+							slug
+							featuredImage {
+								node {
+									sourceUrl(size: MEDIUM_LARGE)
 								}
-								review
+							}
+							episodeTeaser {
+								teaser
+							}
+							episodeNumber {
+								episodeNumber
+							}
+							audio {
+								audioLink
+							}
+							featuredGuests {
+								guests {
+									name
+								}
 							}
 						}
+						cursor
 					}
 				}
 			}
 		`
-	);
-
-	return data?.movies;
-}
-
-export async function getEpisodes(after, before, first, last) {
-	if (existsSync('src/data/episodes.json')) {
-		const episodesFile = readFileSync('src/data/episodes.json');
-		const episodesData = JSON.parse(episodesFile);
-
-		return episodesData;
-	} else {
-		const data = await fetchAPI(
-			`
-				query Episodes($after: String = null, $before: String = null, $first: Int = 11, $last: Int = null) {
-					posts(after: $after, before: $before, first: $first, last: $last, where: {orderby: {field: DATE, order: DESC}}) {
-						edges {
-							node {
-								title
-								content
-								slug
-								featuredImage {
-									node {
-										sourceUrl(size: MEDIUM_LARGE)
-									}
-								}
-								episodeTeaser {
-									teaser
-								}
-								episodeNumber {
-									episodeNumber
-								}
-								audio {
-									audioLink
-								}
-								featuredGuests {
-									guests {
-										name
-									}
-								}
-							}
-							cursor
-						}
-						pageInfo {
-							startCursor
-							hasPreviousPage
-							hasNextPage
-							endCursor
-						}
-					}
-				}
-			`
 		);
-
-		return data?.posts.edges.map((edge) => edge.node);
 	}
+
+	return data?.posts;
 }
 
-export async function getPageById(id, idType = 'DATABASE_ID') {
+export async function getAboutPage() {
 	const data = await fetchAPI(
 		`
-			query PageById($id: ID!, $idType: PageIdType!) {
-				page(id: $id, idType: $idType) {
+			query PageById {
+				page(id: "5656", idType: DATABASE_ID) {
 					content
 					tagline {
 						tagline
@@ -116,49 +87,34 @@ export async function getPageById(id, idType = 'DATABASE_ID') {
 					title
 				}
 			}
-		`,
-		{
-			variables: { id, idType },
-		}
+		`
 	);
 
 	return data?.page;
 }
 
 export async function getPostBySlug(slug) {
-	if (existsSync('src/data/episodes.json')) {
-		const episodesFile = readFileSync('src/data/episodes.json');
-		const episodesData = JSON.parse(episodesFile);
-		const data = episodesData.find((episode) => episode.slug === slug);
-
-		return data;
-	} else {
-		const data = await fetchAPI(
-			`
-			query PostBySlug($id: ID!, $idType: PostIdType!) {
-				post(id: $id, idType: $idType) {
-        			content
+	const data = await fetchAPI(
+		`
+			query PostBySlug($id: ID = "") {
+				post(id: $id, idType: SLUG) {
+					content
 					episodeNumber {
 						episodeNumber
 					}
-					reviews {
-						movies {
-							chanceReview
-							movieTitle
-							noahReview
-						}
+					audio {
+						audioLink
 					}
 					title
 				}
 			}
 		`,
-			{
-				variables: { id: slug, idType: 'SLUG' },
-			}
-		);
+		{
+			variables: { id: slug, idType: 'SLUG' },
+		}
+	);
 
-		return data.post;
-	}
+	return data?.post;
 }
 
 export async function getAllPostsWithSlug() {

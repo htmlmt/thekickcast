@@ -27,22 +27,26 @@ const toBase64 = (str) =>
 export function EpisodeCard({ episodeNumber, headingText, imageUrl, link }) {
 	return (
 		<div className="c-episode relative flex w-full max-w-episode shrink-0 grow flex-col overflow-visible">
-			<div className="absolute top-0 z-10 h-2 w-full -translate-y-1/2 bg-yellow-400" />
+			<div className="absolute top-0 z-10 h-2 w-full -translate-y-1/2 bg-accent-400" />
 
 			<div className="relative h-48 w-full">
 				<Image
 					blurDataURL={`data:image/svg+xml;base64,${toBase64(
 						shimmer(700, 475)
 					)}`}
-					layout="fill"
-					objectFit="cover"
 					placeholder="blur"
+					fill
+					style={{
+						objectFit: 'cover',
+					}}
+					sizes="500px"
+					alt=""
 					quality={50}
 					src={imageUrl}
 				/>
 			</div>
 
-			<SpacingWrapper className="z-0 grow bg-blue-800 py-12">
+			<SpacingWrapper className="z-0 grow bg-gray-700 py-12">
 				<Link
 					aria-describedby={`episode-${episodeNumber}-number`}
 					className="inline-block"

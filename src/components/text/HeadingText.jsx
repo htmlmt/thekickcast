@@ -8,7 +8,10 @@ export function HeadingText({
 }) {
 	return (
 		<Component
-			className={clsx(className, `${sizeClass} font-display`)}
+			className={clsx(
+				className,
+				`${sizeClass} font-sans font-bold tracking-tighter`
+			)}
 			{...props}
 		/>
 	);

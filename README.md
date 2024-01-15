@@ -1,6 +1,6 @@
-# Be Reel
+# The Kick
 
-[Be Reel](https://bereelpodcast.com/) is a movie reviewing & reappraising podcast hosted by Chance Solem-Pfeifer and Noah Ballard.
+[The Kick](https://thekickcast.com/) is a movie reviewing podcast hosted by Chance Solem-Pfeifer.
 
 ## Getting started
 

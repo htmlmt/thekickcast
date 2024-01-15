@@ -5,11 +5,11 @@ export default function Document() {
 		<Html className="h-full antialiased" lang="en">
 			<Head>
 				<link
-					href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@400;700&family=Saira:wght@400;600&family=Roboto+Mono&family=Playfair+Display:ital,wght@1,700&display=swap"
+					href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Mono&display=swap"
 					rel="stylesheet"
 				/>
 			</Head>
-			<body className="flex h-full flex-col bg-gray-700">
+			<body className="flex h-full flex-col">
 				<Main />
 				<NextScript />
 			</body>

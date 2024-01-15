@@ -5,7 +5,7 @@ export function EyebrowText({ as: Component = 'p', className, ...props }) {
 		<Component
 			className={clsx(
 				className,
-				'relative z-10 inline-block bg-gray-900 py-1 px-4 font-display text-lg uppercase tracking-wider text-white'
+				'relative z-10 inline-block border-2 bg-white py-1 px-4 font-sans text-lg uppercase tracking-wider text-gray-700'
 			)}
 			{...props}
 		/>

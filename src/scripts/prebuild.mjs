@@ -1,5 +1,6 @@
 import mkdirp from 'mkdirp';
 import { writeFileSync } from 'fs';
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
 let episodes = [];
 
@@ -11,7 +12,7 @@ async function buildCacheFiles(after, before, first, last) {
 	};
 
 	const query = `
-		query AllEpisodes($after: String = null, $before: String = null, $first: Int = 100, $last: Int = null) {
+		query AllEpisodes($after: String = null, $before: String = null, $first: Int = 50, $last: Int = null) {
 			posts(after: $after, before: $before, first: $first, last: $last, where: {orderby: {field: DATE, order: DESC}}) {
 				edges {
 					node {
@@ -35,19 +36,6 @@ async function buildCacheFiles(after, before, first, last) {
 						featuredGuests {
 							guests {
 								name
-							}
-						}
-						reviews {
-							movies {
-								movie {
-									... on Movie {
-										id
-										movies {
-											review
-										}
-										title
-									}
-								}
 							}
 						}
 					}
@@ -87,8 +75,8 @@ async function buildCacheFiles(after, before, first, last) {
 	if (json.data.posts.pageInfo.hasNextPage) {
 		buildCacheFiles(json.data.posts.pageInfo.endCursor);
 	} else {
-		await mkdirp('src/data');
-		writeFileSync('src/data/episodes.json', JSON.stringify(episodes));
+		await mkdirp('public');
+		writeFileSync('public/episodes.json', JSON.stringify(episodes));
 	}
 }
 

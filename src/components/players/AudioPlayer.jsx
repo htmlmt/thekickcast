@@ -93,14 +93,14 @@ export function AudioPlayer() {
 					<PlayButton player={player} size="sm" />
 				</PodButton>
 
-				<div className="flex h-20 w-full grow flex-col overflow-hidden bg-gray-900">
+				<div className="flex h-20 w-full grow flex-col overflow-hidden bg-gray-700">
 					<SpacingWrapper className="flex grow flex-col justify-center">
 						<div className="flex justify-between gap-x-4">
-							<TimeText className="text-yellow-400">
+							<TimeText className="text-accent-400">
 								{formatTime(displayedCurrentTime, displayedTotalTime)}
 							</TimeText>
 
-							<TimeText className="text-gray-400">
+							<TimeText className="text-gray-700">
 								{formatTime(displayedTotalTime)}
 							</TimeText>
 						</div>
@@ -112,9 +112,9 @@ export function AudioPlayer() {
 						</div>
 					</SpacingWrapper>
 
-					<div className="relative h-1 w-full bg-gray-400">
+					<div className="relative h-1 w-full bg-gray-700">
 						<div
-							className="absolute left-0 top-0 h-full w-0 bg-yellow-400"
+							className="absolute left-0 top-0 h-full w-0 bg-accent-400"
 							style={{
 								width: `${state.getThumbPercent(0) * 100}%`,
 							}}
@@ -123,7 +123,7 @@ export function AudioPlayer() {
 				</div>
 
 				<PodButton
-					href={`https://facebook.com/sharer.php?u=https://bereelpodcast.com${router.asPath}`}
+					href={`https://facebook.com/sharer.php?u=https://thekickcast.com${router.asPath}`}
 				>
 					<IconImage icon="share" />
 				</PodButton>

@@ -3,11 +3,10 @@ import { useMemo } from 'react';
 import Head from 'next/head';
 
 import {
+	getAboutPage,
 	getPostBySlug,
 	getAllPostsWithSlug,
 	getEpisodes,
-	getMovies,
-	getPageById,
 } from '@/lib/api.js';
 
 import { PlayButton } from '@/components/buttons/PlayButton';
@@ -15,23 +14,16 @@ import { PlayButton } from '@/components/buttons/PlayButton';
 import { ContentCard } from '@/components/cards/ContentCard';
 
 import { EpisodesCollection } from '@/components/collections/EpisodesCollection';
-import { MoviesCollection } from '@/components/collections/MoviesCollection';
 
 import { PostHeader } from '@/components/headers/PostHeader';
 
 import { useAudioPlayer } from '@/components/providers/AudioProvider';
 
-import { BadgeText } from '@/components/text/BadgeText';
-import { HeadingText } from '@/components/text/HeadingText';
-
 import { ContentWrapper } from '@/components/wrappers/ContentWrapper';
-import { PageWrapper } from '@/components/wrappers/PageWrapper';
 import { SpacingWrapper } from '@/components/wrappers/SpacingWrapper';
 
-export default function Post({ aboutPage, allMovies, episodes, post }) {
-	allMovies = allMovies.edges.map(({ node }) => node);
-	episodes = episodes.filter((episode) => episode.slug !== post.slug);
-	episodes = episodes.slice(0, 10);
+export default function Post({ aboutPage, episodes = [], post }) {
+	episodes = episodes.edges?.map((edge) => edge.node) || [];
 
 	let audioPlayerData = useMemo(
 		() => ({
@@ -43,24 +35,6 @@ export default function Post({ aboutPage, allMovies, episodes, post }) {
 		[post]
 	);
 	let player = useAudioPlayer(audioPlayerData);
-
-	let movies = [];
-
-	post?.reviews?.movies?.forEach((movie) => {
-		if (movie.movie?.title) {
-			movies.push({
-				movies: {
-					review: movie.movie?.movies?.review,
-				},
-				title: movie.movie?.title,
-			});
-		}
-	});
-
-	const formatter = new Intl.ListFormat('en', {
-		style: 'long',
-		type: 'conjunction',
-	});
 
 	return (
 		<>
@@ -75,14 +49,6 @@ export default function Post({ aboutPage, allMovies, episodes, post }) {
 
 			<PostHeader post={post} />
 
-			<PageWrapper>
-				<SpacingWrapper>
-					{movies.length > 0 && (
-						<MoviesCollection homePage={false} movies={movies} />
-					)}
-				</SpacingWrapper>
-			</PageWrapper>
-
 			<ContentWrapper>
 				<SpacingWrapper className="relative">
 					<div
@@ -95,22 +61,35 @@ export default function Post({ aboutPage, allMovies, episodes, post }) {
 					<PlayButton className="relative mb-8 rotate-1" player={player} />
 				</SpacingWrapper>
 			</ContentWrapper>
+
+			<div className="flex flex-col gap-y-16 bg-header-pattern pb-28">
+				{episodes.length > 0 && <EpisodesCollection episodes={episodes} />}
+
+				{aboutPage && (
+					<ContentWrapper>
+						<ContentCard
+							content={aboutPage.content}
+							eyebrowText={aboutPage.tagline.tagline}
+							headingText={aboutPage.title}
+							polygon="reversed"
+						/>
+					</ContentWrapper>
+				)}
+			</div>
 		</>
 	);
 }
 
 export async function getStaticProps({ params }) {
-	const aboutPage = await getPageById(4062);
+	const aboutPage = await getAboutPage();
 	const post = await getPostBySlug(params?.slug);
-	let allMovies = await getMovies();
 	let episodes = await getEpisodes();
 
 	return {
 		props: {
-			aboutPage: aboutPage,
+			aboutPage,
 			post: post,
 			episodes: episodes,
-			allMovies: allMovies,
 		},
 	};
 }
