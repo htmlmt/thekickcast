@@ -1,5 +1,4 @@
 .next
 node_modules
 .env.local
-public/data
 .DS_Store
