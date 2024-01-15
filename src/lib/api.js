@@ -38,7 +38,7 @@ export async function getEpisodes() {
 		data = await fetchAPI(
 			`
 			query Episodes {
-				posts(first: 50, where: {orderby: {field: DATE, order: DESC}}) {
+				posts(first: 5, where: {orderby: {field: DATE, order: DESC}}) {
 					edges {
 						node {
 							title

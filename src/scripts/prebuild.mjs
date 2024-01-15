@@ -12,7 +12,7 @@ async function buildCacheFiles(after, before, first, last) {
 	};
 
 	const query = `
-		query AllEpisodes($after: String = null, $before: String = null, $first: Int = 50, $last: Int = null) {
+		query AllEpisodes($after: String = null, $before: String = null, $first: Int = 5, $last: Int = null) {
 			posts(after: $after, before: $before, first: $first, last: $last, where: {orderby: {field: DATE, order: DESC}}) {
 				edges {
 					node {
