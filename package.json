@@ -5,7 +5,6 @@
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
-		"prebuild": "rm -rf ./src/data/*.json && node --experimental-fetch -r dotenv/config ./src/scripts/prebuild.mjs dotenv_config_path=.env.local",
 		"start": "next start",
 		"lint": "next lint"
 	},
