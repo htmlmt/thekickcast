@@ -7,7 +7,7 @@ const nextConfig = {
 		scrollRestoration: true,
 	},
 	images: {
-		domains: ['bereelpodcast.com'],
+		domains: ['bereelpodcast.com', 'beamish-sunshine-b948e5.netlify.app/'],
 	},
 };
 
