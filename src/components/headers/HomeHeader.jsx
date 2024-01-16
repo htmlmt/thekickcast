@@ -12,7 +12,7 @@ export function HomeHeader({ heroPost, player }) {
 		<header className="bg-header-pattern pb-24 pt-12">
 			<div className="relative">
 				<PageWrapper>
-					<SpacingWrapper className="c-hero grid grid-cols-1 md:grid-cols-2">
+					<SpacingWrapper className="c-hero relative grid grid-cols-1 md:grid-cols-2">
 						<ContentCard
 							content={heroPost?.episodeTeaser.teaser}
 							eyebrowText={`Episode ${heroPost?.episodeNumber.episodeNumber}`}
