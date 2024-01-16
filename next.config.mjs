@@ -7,7 +7,13 @@ const nextConfig = {
 		scrollRestoration: true,
 	},
 	images: {
-		domains: ['bereelpodcast.com', 'beamish-sunshine-b948e5.netlify.app/'],
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'bereelpodcast.com',
+				port: '',
+			},
+		],
 	},
 };
 
