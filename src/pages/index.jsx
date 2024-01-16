@@ -45,9 +45,9 @@ export default function Home({ aboutPage, episodes = [] }) {
 				{aboutPage && (
 					<ContentWrapper>
 						<ContentCard
-							content={aboutPage.content}
-							eyebrowText={aboutPage.tagline.tagline}
-							headingText={aboutPage.title}
+							content={aboutPage?.content}
+							eyebrowText={aboutPage?.tagline?.tagline}
+							headingText={aboutPage?.title}
 							polygon="reversed"
 						/>
 					</ContentWrapper>

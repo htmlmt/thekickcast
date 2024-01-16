@@ -34,7 +34,7 @@ export async function getEpisodes() {
 			throw new Error("Can't fetch the local file");
 		}
 		data = await response.json();
-	} catch (error) {
+	} catch {
 		data = await fetchAPI(
 			`
 			query Episodes {
@@ -76,8 +76,18 @@ export async function getEpisodes() {
 }
 
 export async function getAboutPage() {
-	const data = await fetchAPI(
-		`
+	let data;
+
+	try {
+		const response = await fetch('/data/about-page.json');
+		if (!response.ok) {
+			// if HTTP-status is 404, 500 or such
+			throw new Error("Can't fetch the local file");
+		}
+		data = await response.json();
+	} catch {
+		data = await fetchAPI(
+			`
 			query PageById {
 				page(id: "5656", idType: DATABASE_ID) {
 					content
@@ -88,14 +98,26 @@ export async function getAboutPage() {
 				}
 			}
 		`
-	);
+		);
+	}
 
 	return data?.page;
 }
 
 export async function getPostBySlug(slug) {
-	const data = await fetchAPI(
-		`
+	let data;
+
+	try {
+		const response = await fetch('/data/episodes.json');
+		if (!response.ok) {
+			// if HTTP-status is 404, 500 or such
+			throw new Error("Can't fetch the local file");
+		}
+		data = await response.json();
+		data = data.find((episode) => episode.slug === slug);
+	} catch {
+		data = await fetchAPI(
+			`
 			query PostBySlug($id: ID = "") {
 				post(id: $id, idType: SLUG) {
 					content
@@ -109,28 +131,11 @@ export async function getPostBySlug(slug) {
 				}
 			}
 		`,
-		{
-			variables: { id: slug, idType: 'SLUG' },
-		}
-	);
+			{
+				variables: { id: slug, idType: 'SLUG' },
+			}
+		);
+	}
 
 	return data?.post;
-}
-
-export async function getAllPostsWithSlug() {
-	const data = await fetchAPI(
-		`
-			{
-				posts(first: 5) {
-					edges {
-						node {
-							slug
-						}
-					}
-				}
-			}
-		`
-	);
-
-	return data?.posts;
 }

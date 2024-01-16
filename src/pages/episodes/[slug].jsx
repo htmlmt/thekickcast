@@ -2,12 +2,7 @@ import { useMemo } from 'react';
 
 import Head from 'next/head';
 
-import {
-	getAboutPage,
-	getPostBySlug,
-	getAllPostsWithSlug,
-	getEpisodes,
-} from '@/lib/api.js';
+import { getAboutPage, getPostBySlug, getEpisodes } from '@/lib/api.js';
 
 import { PlayButton } from '@/components/buttons/PlayButton';
 
@@ -68,9 +63,9 @@ export default function Post({ aboutPage, episodes = [], post }) {
 				{aboutPage && (
 					<ContentWrapper>
 						<ContentCard
-							content={aboutPage.content}
-							eyebrowText={aboutPage.tagline.tagline}
-							headingText={aboutPage.title}
+							content={aboutPage?.content}
+							eyebrowText={aboutPage?.tagline?.tagline}
+							headingText={aboutPage?.title}
 							polygon="reversed"
 						/>
 					</ContentWrapper>
@@ -95,10 +90,12 @@ export async function getStaticProps({ params }) {
 }
 
 export const getStaticPaths = async () => {
-	const allPosts = await getAllPostsWithSlug();
+	const allPosts = await getEpisodes();
+	const paths =
+		allPosts.edges?.map((edge) => `/episodes/${edge.node.slug}`) || [];
 
 	return {
-		paths: allPosts.edges.map(({ node }) => `/episodes/${node.slug}`) || [],
+		paths: paths,
 		fallback: true,
 	};
 };
