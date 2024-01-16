@@ -21,15 +21,18 @@ export function HomeHeader({ heroPost, player }) {
 						/>
 
 						<div className="relative">
-							<Image
-								fill
+							<img
 								style={{
 									objectFit: 'cover',
+									position: 'absolute',
+									height: '100%',
+									width: '100%',
+									left: '0',
+									top: '0',
+									right: '0',
+									bottom: '0',
 								}}
-								sizes="500px"
 								alt=""
-								priority
-								quality={100}
 								src={heroPost.featuredImage?.node.sourceUrl}
 							/>
 						</div>
