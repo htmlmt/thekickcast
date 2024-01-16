@@ -53,7 +53,7 @@ export default function Post({ aboutPage, episodes = [], post }) {
 						}}
 					/>
 
-					<PlayButton className="relative mb-8 rotate-1" player={player} />
+					<PlayButton className="relative mb-4" player={player} />
 				</SpacingWrapper>
 			</ContentWrapper>
 
