@@ -15,7 +15,6 @@ import { useAudioPlayer } from '@/components/providers/AudioProvider';
 import { ContentWrapper } from '@/components/wrappers/ContentWrapper';
 
 export default function Home({ aboutPage, episodes = [] }) {
-	episodes = episodes.edges?.map((edge) => edge.node) || [];
 	const heroPost = episodes[0] || null;
 
 	let audioPlayerData = useMemo(
@@ -39,11 +38,11 @@ export default function Home({ aboutPage, episodes = [] }) {
 
 			{heroPost && <HomeHeader heroPost={heroPost} player={player} />}
 
-			<div className="flex flex-col gap-y-16 bg-header-pattern">
+			<div className="flex flex-col gap-y-16 pt-4" id="episodes">
 				{episodes.length > 0 && <EpisodesCollection episodes={episodes} />}
 
 				{aboutPage && (
-					<ContentWrapper>
+					<ContentWrapper id="about">
 						<ContentCard
 							content={aboutPage?.content}
 							eyebrowText={aboutPage?.tagline?.tagline}

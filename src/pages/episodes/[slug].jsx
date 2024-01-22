@@ -18,8 +18,6 @@ import { ContentWrapper } from '@/components/wrappers/ContentWrapper';
 import { SpacingWrapper } from '@/components/wrappers/SpacingWrapper';
 
 export default function Post({ aboutPage, episodes = [], post }) {
-	episodes = episodes.edges?.map((edge) => edge.node) || [];
-
 	let audioPlayerData = useMemo(
 		() => ({
 			title: post?.title,
@@ -44,20 +42,22 @@ export default function Post({ aboutPage, episodes = [], post }) {
 
 			<PostHeader post={post} />
 
-			<ContentWrapper>
-				<SpacingWrapper className="relative">
-					<div
-						className="c-content c-rich-text"
-						dangerouslySetInnerHTML={{
-							__html: post?.content,
-						}}
-					/>
+			<div className="bg-white pt-12">
+				<ContentWrapper>
+					<SpacingWrapper className="relative">
+						<div
+							className="c-content c-rich-text"
+							dangerouslySetInnerHTML={{
+								__html: post?.content,
+							}}
+						/>
 
-					<PlayButton className="relative mb-4" player={player} />
-				</SpacingWrapper>
-			</ContentWrapper>
+						<PlayButton className="relative mb-4" player={player} />
+					</SpacingWrapper>
+				</ContentWrapper>
+			</div>
 
-			<div className="flex flex-col gap-y-16 bg-header-pattern pb-28">
+			<div className="flex flex-col gap-y-8">
 				{episodes.length > 0 && <EpisodesCollection episodes={episodes} />}
 
 				{aboutPage && (
@@ -91,8 +91,7 @@ export async function getStaticProps({ params }) {
 
 export const getStaticPaths = async () => {
 	const allPosts = await getEpisodes();
-	const paths =
-		allPosts.edges?.map((edge) => `/episodes/${edge.node.slug}`) || [];
+	const paths = allPosts.map((posts) => `/episodes/${posts.slug}`) || [];
 
 	return {
 		paths: paths,

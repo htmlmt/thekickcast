@@ -15,6 +15,9 @@ module.exports = {
 			secondary: {
 				400: '#0cd2d3',
 			},
+			tertiary: {
+				400: '#f990e8',
+			},
 			accent: {
 				400: '#f2f252',
 			},
@@ -38,6 +41,9 @@ module.exports = {
 			backgroundImage: {
 				'header-pattern': "url('/background-sprinkles.svg')",
 			},
+			backgroundSize: {
+				1000: '62.5rem',
+			},
 			maxWidth: {
 				episode: '300px',
 				page: '960px',
@@ -48,6 +54,7 @@ module.exports = {
 		},
 		fontFamily: {
 			display: ['Impact', 'sans-serif'],
+			condensed: ['Saira Extra Condensed', 'sans-serif'],
 			sans: ['Roboto', 'sans-serif'],
 			mono: ['Roboto Mono', 'sans-serif'],
 		},

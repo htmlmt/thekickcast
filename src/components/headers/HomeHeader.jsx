@@ -9,10 +9,10 @@ import { SpacingWrapper } from '@/components/wrappers/SpacingWrapper';
 
 export function HomeHeader({ heroPost, player }) {
 	return (
-		<header className="bg-header-pattern pb-24 pt-12">
+		<header className="pb-16 pt-12">
 			<div className="relative">
 				<PageWrapper>
-					<SpacingWrapper className="c-hero relative grid grid-cols-1 md:grid-cols-2">
+					<SpacingWrapper className="c-hero relative grid grid-cols-1 px-0 md:grid-cols-2">
 						<ContentCard
 							content={heroPost?.episodeTeaser.teaser}
 							eyebrowText={`Episode ${heroPost?.episodeNumber.episodeNumber}`}

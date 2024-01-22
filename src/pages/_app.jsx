@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }) {
 				<SiteWrapper>
 					<SiteHeader />
 
-					<main>
+					<main className="pb-20">
 						<Component {...pageProps} />
 					</main>
 				</SiteWrapper>

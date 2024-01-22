@@ -21,13 +21,13 @@ export function ContentCard({
 	const points = polygons[polygon];
 
 	return (
-		<div>
+		<div className="mx-auto max-w-xl">
 			<div>
 				<svg className="-mb-px fill-gray-700" viewBox="0 0 100 5">
 					<polygon points={points} />
 				</svg>
 
-				<SpacingWrapper className="bg-gray-700 py-2">
+				<SpacingWrapper className="bg-gray-700 py-4">
 					{link && (
 						<Link
 							aria-describedby="hero-teaser hero-episode-number"
@@ -52,9 +52,9 @@ export function ContentCard({
 				)}
 			</div>
 
-			<div className="c-rich-text flex grow flex-col gap-y-4 bg-white py-8">
+			<div className="c-rich-text flex grow flex-col gap-y-4 bg-white pb-16 pt-8">
 				<SpacingWrapper
-					className="flex flex-col gap-y-4"
+					className="flex flex-col gap-y-4 font-sans text-xl"
 					dangerouslySetInnerHTML={{
 						__html: content,
 					}}

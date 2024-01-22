@@ -7,8 +7,6 @@ import { useAudioPlayer } from '@/components/providers/AudioProvider';
 import { PlayButton } from '@/components/buttons/PlayButton';
 import { PodButton } from '@/components/buttons/PodButton';
 
-import { IconImage } from '@/components/images/IconImage';
-
 import { HeadingText } from '@/components/text/HeadingText';
 import { TimeText } from '@/components/text/TimeText';
 
@@ -106,7 +104,7 @@ export function AudioPlayer() {
 						</div>
 
 						<div>
-							<HeadingText className="whitespace-nowrap text-white">
+							<HeadingText className="truncate font-condensed tracking-tight text-white">
 								{player.meta.title}
 							</HeadingText>
 						</div>
@@ -121,12 +119,6 @@ export function AudioPlayer() {
 						></div>
 					</div>
 				</div>
-
-				<PodButton
-					href={`https://facebook.com/sharer.php?u=https://thekickcast.com${router.asPath}`}
-				>
-					<IconImage icon="share" />
-				</PodButton>
 			</SiteWrapper>
 		</div>
 	);

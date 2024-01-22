@@ -13,6 +13,27 @@ export function SiteHeader() {
 					<Link href="/">
 						<LogoImage />
 					</Link>
+
+					<nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-6 md:justify-end">
+						<a
+							className="border-b-8 border-b-secondary-400 px-6 py-4 text-xl font-bold"
+							href="#episodes"
+						>
+							episodes
+						</a>
+						<a
+							className="border-b-8 border-b-accent-400 px-6 py-4 text-xl font-bold"
+							href="#about"
+						>
+							about
+						</a>
+						<Link
+							className="border-b-8 border-b-tertiary-400 px-6 py-4 text-xl font-bold"
+							href="https://podcasts.apple.com/us/podcast/the-kick/id983292375"
+						>
+							subscribe
+						</Link>
+					</nav>
 				</SpacingWrapper>
 			</PageWrapper>
 		</header>

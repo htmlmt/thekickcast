@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
+		"prebuild": "rm -rf ./src/data/*.json && node --experimental-fetch -r dotenv/config ./src/scripts/prebuild.mjs dotenv_config_path=.env.local",
 		"start": "next start",
 		"lint": "next lint"
 	},
@@ -27,6 +28,7 @@
 		"fs": "^0.0.1-security",
 		"mkdirp": "^1.0.4",
 		"next": "^14.0.4",
+		"node-fetch": "^3.3.2",
 		"postcss-focus-visible": "^7.1.0",
 		"react": "^18.2.0",
 		"react-aria": "^3.20.0",
