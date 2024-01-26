@@ -1,5 +1,4 @@
 import { writeFileSync } from 'fs';
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
 let episodes = [];
 
