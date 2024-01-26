@@ -14,7 +14,7 @@ export function SiteHeader() {
 						<LogoImage />
 					</Link>
 
-					<nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-6 md:justify-end">
+					<nav className="hidden flex-wrap items-center justify-center gap-x-6 gap-y-6 md:flex md:justify-end">
 						<a
 							className="border-b-8 border-b-secondary-400 px-6 py-4 text-xl font-bold"
 							href="#episodes"
