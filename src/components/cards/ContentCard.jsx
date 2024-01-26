@@ -21,7 +21,7 @@ export function ContentCard({
 	const points = polygons[polygon];
 
 	return (
-		<div className="mx-auto max-w-xl">
+		<div className="mx-auto w-full max-w-xl">
 			<div>
 				<svg className="-mb-px fill-gray-700" viewBox="0 0 100 5">
 					<polygon points={points} />

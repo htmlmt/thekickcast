@@ -15,7 +15,11 @@ export function HomeHeader({ heroPost, player }) {
 					<SpacingWrapper className="c-hero relative grid grid-cols-1 px-0 md:grid-cols-2">
 						<ContentCard
 							content={heroPost?.episodeTeaser.teaser}
-							eyebrowText={`Episode ${heroPost?.episodeNumber.episodeNumber}`}
+							eyebrowText={
+								heroPost?.episodeNumber?.episodeNumber
+									? `Episode ${heroPost?.episodeNumber.episodeNumber}`
+									: undefined
+							}
 							headingText={heroPost?.title}
 							link={`/episodes/${heroPost?.slug}`}
 						/>
