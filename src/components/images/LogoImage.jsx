@@ -1,7 +1,7 @@
 export function LogoImage() {
 	return (
 		<svg
-			className="w-64"
+			className="mx-auto block w-full max-w-[256px]"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 794.17 424.78"
 		>
