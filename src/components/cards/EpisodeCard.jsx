@@ -30,7 +30,7 @@ export function EpisodeCard({ episodeNumber, headingText, imageUrl, link }) {
 			<SpacingWrapper className="z-0 grow bg-gray-700 py-12">
 				<Link
 					aria-describedby={`episode-${episodeNumber}-number`}
-					className="inline-block"
+					className="c-episode-link inline-block"
 					href={link}
 				>
 					<HeadingText className="text-white">{headingText}</HeadingText>

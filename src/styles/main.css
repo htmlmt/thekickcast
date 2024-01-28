@@ -11,8 +11,8 @@
 		text-decoration: underline;
 	}
 
-	.c-hero a::after,
-	.c-episode a::after {
+	.c-hero .c-episode-link::after,
+	.c-episode .c-episode-link::after {
 		content: '';
 		left: 0;
 		height: 100%;

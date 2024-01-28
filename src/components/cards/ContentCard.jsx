@@ -31,7 +31,7 @@ export function ContentCard({
 					{link && (
 						<Link
 							aria-describedby="hero-teaser hero-episode-number"
-							className="inline-block text-secondary-400"
+							className="c-episode-link inline-block text-secondary-400"
 							href={link}
 						>
 							<HeadingText>{headingText}</HeadingText>
