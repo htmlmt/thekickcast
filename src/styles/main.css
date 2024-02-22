@@ -22,10 +22,6 @@
 		z-index: 20;
 	}
 
-	.c-content {
-		@apply flex flex-col gap-y-8;
-	}
-
 	.c-content figure {
 		@apply flex flex-col gap-y-4;
 	}
@@ -33,6 +29,14 @@
 	.c-content img,
 	.c-content figure {
 		width: 100% !important;
+	}
+
+	.c-content p {
+		margin-bottom: 1.5rem;
+	}
+
+	.c-content p:last-child {
+		margin-bottom: 0;
 	}
 }
 
