@@ -19,6 +19,7 @@ export function EpisodesCollection({ episodes }) {
 							headingText={episode.title}
 							imageUrl={episode.featuredImage?.node.sourceUrl}
 							key={episode.slug}
+							kickName={episode.kickName.kickName}
 							link={`/episodes/${episode.slug}`}
 						/>
 					))}

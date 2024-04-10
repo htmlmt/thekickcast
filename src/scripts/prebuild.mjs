@@ -17,6 +17,9 @@ async function buildCacheFiles(after, before, first, last) {
 						title
 						content
 						slug
+						kickName {
+							kickName
+						}
 						featuredImage {
 							node {
 								sourceUrl(size: MEDIUM_LARGE)
