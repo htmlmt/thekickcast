@@ -50,11 +50,6 @@
 
 .c-episodes-collection {
 	overscroll-behavior-inline: contain;
-	scroll-snap-type: inline proximity;
-}
-
-.c-episode {
-	scroll-snap-align: start;
 }
 
 iframe {
