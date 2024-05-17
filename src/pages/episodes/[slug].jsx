@@ -57,11 +57,11 @@ export default function Post({ aboutPage, episodes = [], post }) {
 				</ContentWrapper>
 			</div>
 
-			<div className="flex flex-col gap-y-8">
+			<div className="flex flex-col gap-y-8" id="episodes">
 				{episodes.length > 0 && <EpisodesCollection episodes={episodes} />}
 
 				{aboutPage && (
-					<ContentWrapper>
+					<ContentWrapper id="about">
 						<ContentCard
 							content={aboutPage?.content}
 							eyebrowText={aboutPage?.tagline?.tagline}
