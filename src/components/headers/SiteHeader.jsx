@@ -46,24 +46,25 @@ export function SiteHeader() {
 							</a>
 						</div>
 
-						<a
+						<Link
 							className="col-span-1 hidden border-b-8 border-b-secondary-400 px-6 py-4 text-xl font-bold md:block"
 							href="#episodes"
 						>
 							episodes
-						</a>
-						<a
+						</Link>
+						<Link
 							className="col-span-1 hidden border-b-8 border-b-accent-400 px-6 py-4 text-xl font-bold md:block"
 							href="#about"
 						>
 							about
-						</a>
-						<Link
+						</Link>
+						<a
 							className="col-span-3 border-b-8 border-b-tertiary-400 px-6 py-4 text-xl font-bold md:col-span-1"
 							href="https://podcasts.apple.com/us/podcast/the-kick/id983292375"
+							target="_blank"
 						>
 							subscribe
-						</Link>
+						</a>
 					</nav>
 				</SpacingWrapper>
 			</PageWrapper>
