@@ -21,8 +21,8 @@ export function SiteHeader() {
 						<LogoImage />
 					</Link>
 
-					<nav className="grid grid-cols-3 gap-6 text-center">
-						<div className="col-span-3 flex justify-end gap-6">
+					<nav className="grid w-full grid-cols-1 gap-6 text-center md:w-auto md:grid-cols-3">
+						<div className="col-span-3 flex justify-center gap-6 md:justify-end">
 							<a
 								aria-label="The Kick on Instagram"
 								href="https://www.instagram.com/thekick_pod/"
@@ -47,19 +47,19 @@ export function SiteHeader() {
 						</div>
 
 						<a
-							className="hidden border-b-8 border-b-secondary-400 px-6 py-4 text-xl font-bold md:block"
+							className="col-span-1 hidden border-b-8 border-b-secondary-400 px-6 py-4 text-xl font-bold md:block"
 							href="#episodes"
 						>
 							episodes
 						</a>
 						<a
-							className="hidden border-b-8 border-b-accent-400 px-6 py-4 text-xl font-bold md:block"
+							className="col-span-1 hidden border-b-8 border-b-accent-400 px-6 py-4 text-xl font-bold md:block"
 							href="#about"
 						>
 							about
 						</a>
 						<Link
-							className="w-full border-b-8 border-b-tertiary-400 px-6 py-4 text-xl font-bold md:w-auto"
+							className="col-span-3 border-b-8 border-b-tertiary-400 px-6 py-4 text-xl font-bold md:col-span-1"
 							href="https://podcasts.apple.com/us/podcast/the-kick/id983292375"
 						>
 							subscribe
